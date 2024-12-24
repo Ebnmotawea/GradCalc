@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>حاسبة الدرجات</title>
-  <link rel="stylesheet" href="style.css"> <!-- Link to CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <div class="container">
     <button id="goBack" style="display: none; position: absolute; top: 20px; right: 20px;">العودة للخلف</button>
-    <img src="https://imgur.com/a/iDJvd53" alt="Logo" style="width: 150px; height: auto;">
+    <h1>حاسبة الدرجات</h1>
     <div id="start">
       <p><strong>مرحبًا! اختر الفصل الدراسي:</strong></p>
       <button id="firstSemester">الفصل الدراسي الأول</button>
@@ -44,21 +45,36 @@
     </div>
 
     <div id="semester2" style="display: none;">
-      <h2>درجات الفصل الدراسي الثاني</h2>
-      <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
-        <div id="semester1PercentageContainer" style="display: none; margin-bottom: 20px;">
-          <p id="semester1PercentageLabel">اكتب نسبة الفصل الدراسي الأول:</p>
-          <input type="number" id="semester1Percentage" placeholder="مثال: 95%" style="text-align: center; padding: 5px; width: 150px;">
-          <p id="semester1PercentageWarning" class="warning" style="display: none;"></p>
+        <h2>درجات الفصل الدراسي الثاني</h2>
+        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+           <div id="semester1PercentageContainer" style="display: none; margin-bottom: 20px;">
+             <p id="semester1PercentageLabel">اكتب نسبة الفصل الدراسي الأول:</p>
+             <input type="number" id="semester1Percentage" placeholder="مثال: 95%" style="text-align: center; padding: 5px; width: 150px;">
+             <p id="semester1PercentageWarning" class="warning" style="display: none;"></p>
+           </div>
         </div>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>المادة</th>
-            <th>الدرجة (من 60)</th>
-          </tr>
-        </thead>
-        <tbody id="semester2DirectTable">
-          <tr><td>الرياضيات</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
-          <tr><td>الكيمياء</td><td><input type="number" class="gradeInput" 
+        <table>
+            <thead>
+                <tr>
+                    <th>المادة</th>
+                    <th>الدرجة (من 60)</th>
+                </tr>
+            </thead>
+            <tbody id="semester2DirectTable">
+                <tr><td>الرياضيات</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+                <tr><td>الكيمياء</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+                <tr><td>الفيزياء</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+                <tr><td>الأحياء</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+                <tr><td>اللغة العربية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+                <tr><td>اللغة الإنجليزية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+                <tr><td>الدراسات الإسلامية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+                <tr><td>الإختياري</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+            </tbody>
+        </table>
+        <button id="calculateSemester2">احسب المجموع النهائي</button>
+        <p class="warning" id="semester2Warning" style="display: none;">يرجى ملء جميع الدرجات.</p>
+        <p class="result" id="semester2Result" style="display: none;"></p>
+    </div>
+  <script src="script.js"></script>
+</body>
+</html>
