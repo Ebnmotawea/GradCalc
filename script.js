@@ -170,3 +170,4 @@
             const isPrediction = accessedFromSemester2Direct ? "" : "المتوقعة ";
             result.textContent = `النسبة الإجمالية ${isPrediction}للمجموع النهائي هي: ${finalPercentage}%`;
         }
+    });
