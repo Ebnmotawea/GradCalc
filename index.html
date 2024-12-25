@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>حاسبة الدرجات</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
   <div class="container">
     <button id="goBack" style="display: none; position: absolute; top: 20px; right: 20px;">العودة إلى الخلف</button>
-    <img id="homeImage" src="image.png" alt="حاسبة الدرجات">
+    <img id="homeImage" src="image.png" alt="حاسبة الدرجات" class="normal-size" style="display: block; max-width: 100%; height: auto;">
     <div id="start">
       <p><strong>مرحبًا! اختر الفصل الدراسي:</strong></p>
       <button id="firstSemester">الفصل الدراسي الأول</button>
@@ -18,8 +23,14 @@
       <p>بواسطة: محمد عادل مطاوع</p>
     </div>
 
-    <div id="semester1" style="display: none;">
-      <h2>درجات الفصل الدراسي الأول</h2>
+    <div id="pathSelection" style="display: none;">
+      <h3>اختر المسار:</h3>
+      <button id="sciencePath">المسار العلمي</button>
+      <button id="literaryPath">المسار الأدبي</button>
+    </div>
+
+    <div id="semester1Science" class="hidden">
+      <h2>درجات الفصل الدراسي الأول (المسار العلمي)</h2>
       <table>
         <thead>
           <tr>
@@ -27,7 +38,7 @@
             <th>الدرجة (من 40)</th>
           </tr>
         </thead>
-        <tbody id="semester1Table">
+        <tbody id="semester1TableScience">
           <tr><td>الرياضيات</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
           <tr><td>الكيمياء</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
           <tr><td>الفيزياء</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
@@ -38,42 +49,100 @@
           <tr><td>المادة الاختيارية</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
         </tbody>
       </table>
-      <button id="calculateSemester1">احسب</button>
-      <p class="warning" id="semester1Warning" style="display: none;">يرجى ملء جميع الدرجات.</p>
-      <p class="result" id="semester1Result" style="display: none;"></p>
-      <button id="predictFinal" style="display: none;">توقع المجموع النهائي</button>
+      <button id="calculateSemester1Science">احسب</button>
+      <p class="warning" id="semester1WarningScience" style="display: none;">يرجى ملء جميع الدرجات.</p>
+      <p class="result" id="semester1ResultScience" style="display: none;"></p>
+      <button id="predictFinalScience" style="display: none;">توقع المجموع النهائي</button>
     </div>
 
-    <div id="semester2" style="display: none;">
-        <h2>درجات الفصل الدراسي الثاني</h2>
-        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
-           <div id="semester1PercentageContainer" style="display: none; margin-bottom: 20px;">
-             <p id="semester1PercentageLabel">اكتب نسبة الفصل الدراسي الأول:</p>
-             <input type="number" id="semester1Percentage" placeholder="مثال: 95%" style="text-align: center; padding: 5px; width: 150px;">
-             <p id="semester1PercentageWarning" class="warning" style="display: none;"></p>
-           </div>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>المادة</th>
-                    <th>الدرجة (من 60)</th>
-                </tr>
-            </thead>
-            <tbody id="semester2DirectTable">
-                <tr><td>الرياضيات</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
-                <tr><td>الكيمياء</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
-                <tr><td>الفيزياء</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
-                <tr><td>الأحياء</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
-                <tr><td>اللغة العربية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
-                <tr><td>اللغة الإنجليزية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
-                <tr><td>التربية الإسلامية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
-                <tr><td>المادة الاختيارية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
-            </tbody>
-        </table>
-        <button id="calculateSemester2">احسب المجموع النهائي</button>
-        <p class="warning" id="semester2Warning" style="display: none;">يرجى ملء جميع الدرجات.</p>
-        <p class="result" id="semester2Result" style="display: none;"></p>
+    <div id="semester1Literary" class="hidden">
+      <h2>درجات الفصل الدراسي الأول (المسار الأدبي)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>المادة</th>
+            <th>الدرجة (من 40)</th>
+          </tr>
+        </thead>
+        <tbody id="semester1TableLiterary">
+          <tr><td>الرياضيات العامة</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
+          <tr><td>اللغة العربية</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
+          <tr><td>المادة الاختيارية</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
+          <tr><td>الجغرافيا</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
+          <tr><td>التربية الإسلامية</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
+          <tr><td>العلوم العامة</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
+          <tr><td>اللغة الإنجليزية</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
+          <tr><td>التاريخ</td><td><input type="number" class="gradeInput" data-max="40" max="40"></td></tr>
+        </tbody>
+      </table>
+      <button id="calculateSemester1Literary">احسب</button>
+      <p class="warning" id="semester1WarningLiterary" style="display: none;">يرجى ملء جميع الدرجات.</p>
+      <p class="result" id="semester1ResultLiterary" style="display: none;"></p>
+      <button id="predictFinalLiterary" style="display: none;">توقع المجموع النهائي</button>
+    </div>
+
+    <div id="semester2Science" class="hidden">
+      <h2>درجات الفصل الدراسي الثاني (المسار العلمي)</h2>
+      <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+         <div id="semester1PercentageContainerScience" style="display: none; margin-bottom: 20px;">
+           <p id="semester1PercentageLabelScience">اكتب نسبة الفصل الدراسي الأول:</p>
+           <input type="number" id="semester1PercentageScience" placeholder="مثال: 95%" style="text-align: center; padding: 5px; width: 150px;">
+           <p id="semester1PercentageWarningScience" class="warning" style="display: none;"></p>
+         </div>
+      </div>
+      <table>
+          <thead>
+              <tr>
+                  <th>المادة</th>
+                  <th>الدرجة (من 60)</th>
+              </tr>
+          </thead>
+          <tbody id="semester2TableScience">
+              <tr><td>الرياضيات</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>الكيمياء</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>الفيزياء</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>الأحياء</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>اللغة العربية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>اللغة الإنجليزية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>التربية الإسلامية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>المادة الاختيارية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+          </tbody>
+      </table>
+      <button id="calculateSemester2Science">احسب المجموع النهائي</button>
+      <p class="warning" id="semester2WarningScience" style="display: none;">يرجى ملء جميع الدرجات.</p>
+      <p class="result" id="semester2ResultScience" style="display: none;"></p>
+    </div>
+
+    <div id="semester2Literary" class="hidden">
+      <h2>درجات الفصل الدراسي الثاني (المسار الأدبي)</h2>
+      <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+         <div id="semester1PercentageContainerLiterary" style="display: none; margin-bottom: 20px;">
+           <p id="semester1PercentageLabelLiterary">اكتب نسبة الفصل الدراسي الأول:</p>
+           <input type="number" id="semester1PercentageLiterary" placeholder="مثال: 95%" style="text-align: center; padding: 5px; width: 150px;">
+           <p id="semester1PercentageWarningLiterary" class="warning" style="display: none;"></p>
+         </div>
+      </div>
+      <table>
+          <thead>
+              <tr>
+                  <th>المادة</th>
+                  <th>الدرجة (من 60)</th>
+              </tr>
+          </thead>
+          <tbody id="semester2TableLiterary">
+              <tr><td>الرياضيات العامة</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>اللغة العربية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>المادة الاختيارية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>الجغرافيا</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>التربية الإسلامية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>العلوم العامة</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>اللغة الإنجليزية</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+              <tr><td>التاريخ</td><td><input type="number" class="gradeInput" data-max="60" max="60"></td></tr>
+          </tbody>
+      </table>
+      <button id="calculateSemester2Literary">احسب المجموع النهائي</button>
+      <p class="warning" id="semester2WarningLiterary" style="display: none;">يرجى ملء جميع الدرجات.</p>
+      <p class="result" id="semester2ResultLiterary" style="display: none;"></p>
     </div>
   </div>
   
