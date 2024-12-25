@@ -87,7 +87,7 @@
         }
         #homeImage {
             width: 25vw;        /* Width based on viewport width */
-            height: 25vw;       /* Height will adjust to maintain aspect ratio */
+            height: auto;       /* Height will adjust to maintain aspect ratio */
             display: block;
             margin: 0 auto;
 
