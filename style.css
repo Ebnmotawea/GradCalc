@@ -83,6 +83,7 @@
           font-size: 22px; /* Increased font size for result text */
           margin-top: 20px;
           font-family: 'Sakkal Majalla', Arial, sans-serif; /* Apply font to result text */
+        }
         #homeImage {
             width: 150px; /* Fixed width for the image */
             height: auto; /* Maintain aspect ratio */
