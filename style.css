@@ -85,12 +85,12 @@
           font-family: 'Sakkal Majalla', Arial, sans-serif; /* Apply font to result text */
         #homeImage {
             width: 50px;   /* Set a fixed width */
-            math-width: 100%;
+            math-width: 10%;
             height: auto;   /* Maintain aspect ratio */
             margin: 0 auto; /* Center the image */
         }
         .normal-size {
-            max-width: 50%; /* Adjust this value to your preference */
+            max-width: 5%; /* Adjust this value to your preference */
             height: auto;
         }
 
