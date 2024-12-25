@@ -84,8 +84,8 @@
           margin-top: 20px;
           font-family: 'Sakkal Majalla', Arial, sans-serif; /* Apply font to result text */
         #homeImage {
-            width: 150px;   /* Explicit width */
-            height: 100px;  /* Explicit height */
+            width: 1px;   /* Explicit width */
+            height: 1px;  /* Explicit height */
             display: block; /* Center alignment */
             margin: 0 auto; /* Horizontally center the image */
         }
