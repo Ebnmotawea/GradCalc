@@ -86,7 +86,7 @@
         }
         #homeImage {
             width: 150px !important; /* Explicit width */
-            height: 100px !important; /* Explicit height */
+            height: 150px !important; /* Explicit height */
             max-width: none !important; /* Prevent scaling */
             display: block; /* Block-level element for centering */
             margin: 0 auto; /* Center the image horizontally */
